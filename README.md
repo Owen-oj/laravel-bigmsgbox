@@ -1,10 +1,9 @@
-# Very short description of the package
+# Bigmsgbox notifications channel for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/owenoj/laravel-bigmsgbox.svg?style=flat-square)](https://packagist.org/packages/owenoj/laravel-bigmsgbox)
 [![Total Downloads](https://img.shields.io/packagist/dt/owenoj/laravel-bigmsgbox.svg?style=flat-square)](https://packagist.org/packages/owenoj/laravel-bigmsgbox)
-![GitHub Actions](https://github.com/owenoj/laravel-bigmsgbox/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package makes it easy to send Bigmsgbox sms notifications with Laravel 8+
 
 ## Installation
 
@@ -13,13 +12,43 @@ You can install the package via composer:
 ```bash
 composer require owenoj/laravel-bigmsgbox
 ```
+## Configuration
 
+```bash
+BIGMSGBOX_API_KEY=ABXCDSD
+BIGMSGBOX_API_SECRET=HFHFK992
+BIGMSGBOX_SENDERID=MyCompany
+```
 ## Usage
+Now you can use the channel in your via() method inside the notification:
+
 
 ```php
-// Usage description here
-```
+use Owenoj\LaravelBigmsgbox\BigmsgboxChannel;
+use Illuminate\Notifications\Notification;
 
+class AccountApproved extends Notification
+{
+    public function via($notifiable)
+    {
+        return [BigmsgboxChannel::class];
+    }
+
+    public function toBigmsgbox($notifiable)
+    {
+        return "Your  account was approved!";//your message
+    }
+}
+```
+### In order to let your Notification know which phone are you sending to, the channel will look for the phone_number attribute of the Notifiable model. If you want to override this behaviour, add the routeNotificationForBigmsgbox method to your Notifiable model.
+```php
+
+public function routeNotificationForBigmsgbox()
+{
+    return '2331234567890';
+}
+
+```
 ### Testing
 
 ```bash
