@@ -10,14 +10,12 @@ class BigmsgboxChannel
 {
     
     protected Client $client;
-    protected string $message;
     protected $apiSecret;
     protected $apiKey;
     
-    public function __construct($message)
+    public function __construct()
     {
         $this->client = new Client();
-        $this->client = $message;
         $this->apiSecret = config('config.apiSecret');
         $this->apiKey = config('config.apiKey');
     }
