@@ -13,12 +13,14 @@ class BigmsgboxChannel
     protected Client $client;
     protected $apiSecret;
     protected $apiKey;
+    protected $senderId;
     
     public function __construct()
     {
         $this->client = new Client();
         $this->apiSecret = config('config.apiSecret');
         $this->apiKey = config('config.apiKey');
+        $this->senderId = config('config.senderId');
     }
     
     /**
@@ -29,8 +31,7 @@ class BigmsgboxChannel
         try {
             $to = $this->getTo($notifiable);
             $message = $notification->toBigmsgbox($notifiable);
-            $senderId = config('config.senderId');
-            return $this->client->get("https://api.bigmsgbox.com/message/send-sms?from=$senderId&to={$to}&message={$message}&apikey=$this->apiKey&apisecret=$this->apiSecret");
+            return $this->client->get("https://api.bigmsgbox.com/message/send-sms?from=$this->senderId&to={$to}&message={$message}&apikey=$this->apiKey&apisecret=$this->apiSecret");
         } catch (\Exception $exception) {
             
             throw $exception;
