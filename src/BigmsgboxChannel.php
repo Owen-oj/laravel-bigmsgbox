@@ -18,9 +18,9 @@ class BigmsgboxChannel
     public function __construct()
     {
         $this->client = new Client();
-        $this->apiSecret = config('config.apiSecret');
-        $this->apiKey = config('config.apiKey');
-        $this->senderId = config('config.senderId');
+        $this->apiSecret = config('laravel-bigmsgbox.apiSecret');
+        $this->apiKey = config('laravel-bigmsgbox.apiKey');
+        $this->senderId = config('laravel-bigmsgbox.senderId');
     }
     
     /**
