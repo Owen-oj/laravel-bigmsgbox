@@ -5,6 +5,7 @@ namespace Owenoj\LaravelBigmsgbox;
 
 
 use GuzzleHttp\Client;
+use Illuminate\Notifications\Notification;
 
 class BigmsgboxChannel
 {
@@ -23,7 +24,7 @@ class BigmsgboxChannel
     /**
      * @throws \Exception
      */
-    public function send($notifiable, \Notification $notification)
+    public function send($notifiable, Notification $notification)
     {
         try {
             $to = $this->getTo($notifiable);
