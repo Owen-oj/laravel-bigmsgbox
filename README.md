@@ -40,7 +40,25 @@ class AccountApproved extends Notification
     }
 }
 ```
-### In order to let your Notification know which phone are you sending to, the channel will look for the phone_number attribute of the Notifiable model. If you want to override this behaviour, add the routeNotificationForBigmsgbox method to your Notifiable model.
+You can also send sms via Facade like so:
+```php
+namespace App\Http\Controllers;
+
+use Owenoj\LaravelBigmsgbox\Bigmsgbox;
+use Illuminate\Notifications\Notification;
+
+class AccountController extends Controller
+{
+    
+    public function sendsms()
+    {
+        $message = "Your  account was approved!";
+        $to = '2331234567890';
+        return Bigmsgbox::send($to,$message);
+    }
+}
+```
+ In order to let your Notification know which phone are you sending to, the channel will look for the phone_number attribute of the Notifiable model. If you want to override this behaviour, add the **routeNotificationForBigmsgbox** method to your Notifiable model.
 ```php
 
 public function routeNotificationForBigmsgbox()
