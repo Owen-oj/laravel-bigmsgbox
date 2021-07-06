@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \Owenoj\LaravelBigmsgbox\Skeleton\SkeletonClass
  */
-class LaravelBigmsgboxFacade extends Facade
+class Bigmsgbox extends Facade
 {
     /**
      * Get the registered name of the component.

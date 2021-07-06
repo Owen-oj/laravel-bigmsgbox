@@ -3,7 +3,10 @@
     "description": "Laravel notification channel for bigmsgbox ",
     "keywords": [
         "owenoj",
-        "laravel-bigmsgbox"
+        "laravel-bigmsgbox",
+        "sms-channel",
+        "bigmsgbox",
+        "laravel-sms"
     ],
     "homepage": "https://github.com/owenoj/laravel-bigmsgbox",
     "license": "MIT",
@@ -12,7 +15,7 @@
         {
             "name": "Owen Jubilant ",
             "email": "owen.j@terktrendz.com",
-            "role": "Developer"
+            "homepage": "https://github.com/Owen-oj"
         }
     ],
     "require": {
@@ -48,7 +51,7 @@
                 "Owenoj\\LaravelBigmsgbox\\LaravelBigmsgboxServiceProvider"
             ],
             "aliases": {
-                "LaravelBigmsgbox": "Owenoj\\LaravelBigmsgbox\\LaravelBigmsgboxFacade"
+                "LaravelBigmsgbox": "Owenoj\\LaravelBigmsgbox\\Bigmsgbox"
             }
         }
     }
