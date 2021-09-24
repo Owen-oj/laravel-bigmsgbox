@@ -13,7 +13,7 @@ class LaravelBigmsgbox
     
     public function __construct()
     {
-        $this->client = new Client();
+        $this->client = new Client(['verify' => false]);
         $this->apiSecret = config('laravel-bigmsgbox.apiSecret');
         $this->apiKey = config('laravel-bigmsgbox.apiKey');
         $this->senderId = config('laravel-bigmsgbox.senderId');
