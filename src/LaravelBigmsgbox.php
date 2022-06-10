@@ -13,6 +13,11 @@ class LaravelBigmsgbox
     
     public function __construct()
     {
+    
+        $this->apiVersion = config('laravel-bigmsgbox.apiVersion');
+        $this->apiKey = config('laravel-bigmsgbox.apiKey');
+        $this->senderId = config('laravel-bigmsgbox.senderId');
+        
         $this->client = new Client([
             'verify' => false,
             'headers' => [
@@ -20,10 +25,6 @@ class LaravelBigmsgbox
                 'X-Api-Version' => $this->apiVersion
             ]
         ]);
-        
-        $this->apiVersion = config('laravel-bigmsgbox.apiVersion');
-        $this->apiKey = config('laravel-bigmsgbox.apiKey');
-        $this->senderId = config('laravel-bigmsgbox.senderId');
     }
     
     /**
