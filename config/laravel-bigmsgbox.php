@@ -5,6 +5,6 @@
  */
 return [
     'apiKey' => env('BIGMSGBOX_API_KEY'),
-    'apiSecret' => env('BIGMSGBOX_API_SECRET'),
+    'apiVersion' => env('BIGMSGBOX_API_VERSION','1.0'),
     'senderId' => env('BIGMSGBOX_SENDERID'),
 ];
