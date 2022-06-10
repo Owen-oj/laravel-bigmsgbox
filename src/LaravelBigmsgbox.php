@@ -35,7 +35,7 @@ class LaravelBigmsgbox
         if (is_null($this->senderId)) {
             throw new \Exception("Invalid senderId or senderId is null");
         }
-        return $this->client->get("https://api-new.bigmsgbox.com/message/send?From=$this->senderId&To={$to}&Message={$message}");
+        return $this->client->get("https://api-new.bigmsgbox.com/send?From=$this->senderId&To={$to}&Message={$message}");
         
     }
 }
