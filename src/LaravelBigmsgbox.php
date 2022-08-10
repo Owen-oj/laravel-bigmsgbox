@@ -10,6 +10,7 @@ class LaravelBigmsgbox
     protected $apiVersion;
     protected $apiKey;
     protected $senderId;
+    protected $baseUrl;
     
     public function __construct()
     {
@@ -17,6 +18,7 @@ class LaravelBigmsgbox
         $this->apiVersion = config('laravel-bigmsgbox.apiVersion');
         $this->apiKey = config('laravel-bigmsgbox.apiKey');
         $this->senderId = config('laravel-bigmsgbox.senderId');
+        $this->baseUrl = config('laravel-bigmsgbox.baseUrl');
         
         $this->client = new Client([
             'verify' => false,
@@ -36,7 +38,7 @@ class LaravelBigmsgbox
         if (is_null($this->senderId)) {
             throw new \Exception("Invalid senderId or senderId is null");
         }
-        return $this->client->get("https://api-new.bigmsgbox.com/send?From=$this->senderId&To={$to}&Message={$message}");
+        return $this->client->get("$this->baseUrl?From=$this->senderId&To={$to}&Message={$message}");
         
     }
 }
